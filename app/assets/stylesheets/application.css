@@ -1,15 +1,42 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
  *
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css?family=Ranga&display=swap');
+
+ * {
+   margin: 0;
+   padding: 0;
+ }
+
+
+ body {
+   margin: 0;
+   line-height: 1.6;
+ }
+
+.my-navbar {
+  box-shadow: 0 20px 6px 1px #31353D;
+}
+
+.ryda-brand {
+  font-size: 1.5rem;
+  font-family: 'Ranga', cursive;
+}
+
+.brand-tyre {
+  width: 1.7rem;
+  border-radius: 50px;
+}
+
+.footer-class {
+  width: 100%;
+  background-color: #fff;
+  color: #000;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  position: absolute;
+  font-size: 1.2rem;
+  font-family: 'Ranga', cursive;
+}

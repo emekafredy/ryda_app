@@ -4,12 +4,24 @@
     <title>RydaApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-light bg-light my-navbar">
+      <a class="navbar-brand ryda-brand" href="#">
+        RYDA APP
+        <img class="brand-tyre" src="https://res.cloudinary.com/dgbmeqmyf/image/upload/v1559171876/Realistic_wheel.jpg" alt="">
+      </a>
+      <div class="float-right">
+        <!-- <button class="btn btn-primary"> Logout </button> -->
+      </div>
+    </nav>
     <%= yield %>
+    <footer class="footer-class text-center">
+      <p> &copy; <em>Ryda App</em> , 2019 </p>
+    </footer>
   </body>
 </html>
