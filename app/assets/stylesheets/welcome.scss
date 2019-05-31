@@ -44,11 +44,6 @@
     font-family: 'Ranga', cursive;
     line-height: 1.1;
     color: #000;
-
-    .tyre-img {
-      width: 5rem;
-      border-radius: 50px;
-    }
   }
 
   p {
@@ -58,48 +53,63 @@
 
   .login {
     border-radius: 4px;
-    background-color: #4285F4;
+    text-decoration: none;
+    background-color: #fff;
     border: none;
-    color: #fff;
+    color: #696969;
     text-align: center;
     font-size: 1rem;
-    padding: 15px 18px;
-    width: 20rem;
-    transition: all 0.5s;
+    font-weight: bold;
+    padding: 12px 18px;
+    width: 17rem;
+    transition: all 0.2s;
     cursor: pointer;
     margin: 5px;
     outline: none;
-
-    span {
-      cursor: pointer;
-      display: inline-block;
-      position: relative;
-      transition: 0.5s;
-
-      &:after {
-        content: '\00bb';
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-      }
-    }
+    -moz-box-shadow:    0 0 8px #31353D;
+    -webkit-box-shadow: 0 0 8px #31353D;
+    box-shadow:         0 0 8px #31353D;
 
     &:hover {
-      background: #4285F4;
       cursor: pointer;
       opacity: 1;
-      transition: .5s;
+      transition: .2s;
+      -moz-box-shadow:    0 0 15px #31353D;
+      -webkit-box-shadow: 0 0 15px #31353D;
+      box-shadow:         0 0 15px #31353D;
+    }
 
-      span {
-        padding-right: 25px;
+    .google-Logout {
+      width: 2rem;
+      border-radius: 50px;
+    }
 
-        &:after {
-          opacity: 1;
-          right: 0;
-        }
-      }
+    .google-text {
+      margin-right: -0.2rem;
+    }
+
+    .text-1 {
+      color: #4285F4;
+    }
+
+    .text-2 {
+      color: #DB4437;
+    }
+
+    .text-3 {
+      color: #F4B400;
+    }
+
+    .text-4 {
+      color: #4285F4;
+    }
+
+    .text-5 {
+      color: #0F9D58;
+    }
+
+    .text-6 {
+      color: #DB4437;
     }
   }
 }

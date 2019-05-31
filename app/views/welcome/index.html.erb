@@ -1,10 +1,22 @@
 <header class="lander">
 	<h1>
     The Ryda App
-    <img class="tyre-img" src="https://res.cloudinary.com/dgbmeqmyf/image/upload/v1559171876/Realistic_wheel.jpg" alt="">
   </h1>
 	<p>...Epic rides with Friends...</p>
-	<button class="login">
-    <span>Sign in with Google</span>
-  </button>
+	<% if user_signed_in? %>
+		<a href="#" class="login">
+			View Dashboard
+		</a>
+	<%else%>
+		<a href="<%=user_google_oauth2_omniauth_authorize_path%>" class="login">
+	    <img src="http://www.sclance.com/pngs/google-g-logo-png/google_g_logo_png_593476.jpg" alt="" class="google-Logout">
+	    Sign in with
+	    <span class="google-text text-1">G</span>
+	    <span class="google-text text-2">o</span>
+	    <span class="google-text text-3">o</span>
+	    <span class="google-text text-4">g</span>
+	    <span class="google-text text-5">l</span>
+	    <span class="google-text text-6">e</span>
+	  </a>
+	<%end%>
 </header>
