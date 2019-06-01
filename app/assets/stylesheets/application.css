@@ -3,7 +3,7 @@
  *= require_tree .
  *= require_self
  */
- @import url('https://fonts.googleapis.com/css?family=Ranga&display=swap');
+ @import url('https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans|Ranga|Roboto+Mono&display=swap');
 
  * {
    margin: 0;
@@ -14,15 +14,18 @@
  body {
    margin: 0;
    line-height: 1.6;
+   background: #fafbfb;
  }
 
 .my-navbar {
-  box-shadow: 0 20px 6px 1px #31353D;
+  box-shadow: 0 5px 6px 1px #31353D;
 }
 
 .ryda-brand {
   font-size: 1.5rem;
   font-family: 'Ranga', cursive;
+  font-weight: bold;
+  color: #ce0058 !important;
 }
 
 .brand-tyre {
