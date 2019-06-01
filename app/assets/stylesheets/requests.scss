@@ -1,0 +1,105 @@
+// Place all the styles related to the Requests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new-request-wrapper {
+  min-height: 100vh;
+  background: #fafbfb;
+  margin-bottom: 1rem;
+
+  .new-request-header {
+    margin-top: 4rem;
+    font-family: 'Ranga', cursive;
+  }
+
+  .new-request-form-wrapper {
+    width: 40%;
+    margin: auto;
+    padding: 2rem;
+    background-color: #fff;
+    border: 1px solid #e4e8ea;
+    padding: 40px 40px 20px 40px;
+  }
+
+  .back-link {
+    width: 40%;
+    margin: auto;
+    margin-top: 0.5rem;
+    font-family: 'Dosis', cursive;
+    font-weight: 800;
+  }
+
+  input[type=submit] {
+    background-color: #ce0058;
+    border: none;
+    color: white;
+    padding: 0.6rem 1.6rem;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  label {
+    font-weight: bold;
+  }
+}
+
+.requests-table-header {
+  margin-top: 4rem;
+  font-family: 'Ranga', cursive;
+}
+
+.table-div {
+  width: 80%;
+  margin: auto;
+}
+
+.btn-red {
+  background-color: #ce0058;
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+    opacity: 0.8;
+  }
+}
+
+.error-message {
+  font-size: 0.75rem;
+  color: red;
+  margin-bottom: 0px;
+}
+
+.request-details-wrapper {
+  width: 45%;
+  margin: auto;
+  background-color: #fff;
+  border: 1px solid #e4e8ea;
+  padding: 40px 40px 20px 40px;
+
+  .details-sub-header {
+    margin-top: 2rem;
+    font-family: 'Ranga', cursive;
+  }
+
+  .details-key-value-wrapper {
+    padding: 0.4rem .5rem;
+    font-size: .8rem;
+  }
+
+  .requester-profile-image {
+    width: 5rem;
+    border-radius: 50px;
+    margin-bottom: 0.5rem;
+  }
+
+  .requester-profile-name {
+    font-size: 1.2rem;
+    font-family: 'Dosis', cursive;
+  }
+
+  .btn-def {
+    background: #fafbfb;
+    border: 1px solid #ccc;
+  }
+
+}

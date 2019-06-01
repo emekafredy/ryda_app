@@ -1,0 +1,10 @@
+<div class="new-request-wrapper">
+  <h1 class="text-center new-request-header">New Request</h1>
+  <hr>
+  <div class="new-request-form-wrapper">
+    <%= render 'form', request: @request %>
+  </div>
+  <div class="back-link">
+    <%= link_to 'Back to requests', requests_path, :class => "text-center" %>
+  </div>
+</div>

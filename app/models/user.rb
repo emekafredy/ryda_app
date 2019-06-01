@@ -16,4 +16,6 @@ class User < ApplicationRecord
       user.save
     end
   end
+
+  has_many :requests
 end

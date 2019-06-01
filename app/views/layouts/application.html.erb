@@ -17,7 +17,7 @@
     <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
     <nav class="navbar navbar-light bg-light my-navbar">
-      <a class="navbar-brand ryda-brand" href="#">
+      <a class="navbar-brand ryda-brand" href="<%=root_path%>">
         RYDA APP
         <img class="brand-tyre" src="https://rukminim1.flixcart.com/image/704/704/jj7givk0/two-wheeler-tyre/y/h/r/120-80-16-60p-tubeless-bike-tyre-nylogrip-zapper-kurve-mrf-original-imaf5csmsvfguhqw.jpeg?q=70" alt="">
       </a>
@@ -30,9 +30,9 @@
                 <%= current_user.last_name %>
                 <img src="<%= current_user.image %>" alt="" class="profile-image">
               </a>
-              <div class="dropdown-menu style-margin text-center">
+              <div class="dropdown-menu text-center">
                 <a href="#" class="dropdown-item dropdown-nav-link"> Offer Ride </a>
-                <a href="#" class="dropdown-item dropdown-nav-link"> Request Ride </a>
+                <%= link_to('Request Ride', new_request_path, :class => "dropdown-item dropdown-nav-link") %>
                 <hr>
                 <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "dropdown-item dropdown-nav-link") %>
               </div>
@@ -41,7 +41,7 @@
         <%end%>
       </div>
     </nav>
-    <%= yield %>
+      <%= yield %>
     <footer class="footer-class text-center">
       <p> &copy; <em>Ryda App</em> , 2019 </p>
     </footer>

@@ -1,0 +1,53 @@
+<div class="new-request-wrapper">
+  <p id="notice"><%= notice %></p>
+
+  <h1 class="text-center requests-table-header">Requests</h1>
+  <hr>
+  <div class="table-div">
+    <%= link_to new_request_path, :class => "btn btn-red"  do %>
+      <i class="fa fa-plus"></i> New Request
+    <% end %>
+    <br><br>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Status</th>
+          <th>Details</th>
+          <th>Edit</th>
+          <th>Cancel</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @requests.each do |request| %>
+          <tr>
+            <td><%= request.id %></td>
+            <td><%= request.origin %></td>
+            <td><%= request.destination %></td>
+            <td><%= request.status %></td>
+            <td>
+              <%= link_to request, class: "btn btn-success" do %>
+                <i class="fa fa-info"></i>
+              <% end %>
+            </td>
+
+            <td>
+              <%= link_to edit_request_path(request), :class => "btn btn-primary"  do %>
+                <i class="fa fa-edit"></i>
+              <% end %>
+            </td>
+
+            <td>
+              <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            </td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
