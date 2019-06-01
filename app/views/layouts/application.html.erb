@@ -31,7 +31,7 @@
                 <img src="<%= current_user.image %>" alt="" class="profile-image">
               </a>
               <div class="dropdown-menu text-center">
-                <a href="#" class="dropdown-item dropdown-nav-link"> Offer Ride </a>
+                <%= link_to('Offer Ride', new_offer_path, :class => "dropdown-item dropdown-nav-link") %>
                 <%= link_to('Request Ride', new_request_path, :class => "dropdown-item dropdown-nav-link") %>
                 <hr>
                 <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "dropdown-item dropdown-nav-link") %>

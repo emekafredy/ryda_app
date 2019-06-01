@@ -18,4 +18,5 @@ class User < ApplicationRecord
   end
 
   has_many :requests
+  has_many :offers
 end

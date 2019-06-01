@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   authenticated :user do
     resources :requests
+    resources :offers
   end
 end
