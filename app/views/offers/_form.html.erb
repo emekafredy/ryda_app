@@ -1,0 +1,40 @@
+<%= form_with(model: offer, local: true) do |form| %>
+  <div class="input-group mb-2p">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <i class="fa fa-user"></i>
+      </div>
+    </div>
+    <%= form.text_field :origin, :class => "form-control", :placeholder => "Origin" %>
+  </div>
+  <p class="error-message"> <%= offer.errors.full_messages_for(:origin)[0] %> </p>
+  <br>
+  <div class="input-group mb-2p">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <i class="fa fa-user"></i>
+      </div>
+    </div>
+    <%= form.text_field :destination, :class => "form-control", :placeholder => "Destination" %>
+  </div>
+  <p class="error-message"> <%= offer.errors.full_messages_for(:destination)[0] %> </p>
+  <hr>
+
+  <%= form.label 'Take off time' %>
+  <div class="form-group">
+    <%= form.time_select :take_off, :class => "form-control"  %>
+  </div>
+
+  <hr>
+  <div class="form-group">
+    <%= form.label :maximum_intake %>
+    <br>
+    <%= form.number_field :maximum_intake, :class => "my-form-control", min: 1  %>
+  </div>
+  <p class="error-message"> <%= offer.errors.full_messages_for(:maximum_intake)[0] %> </p>
+
+  <hr>
+  <div class="text-center">
+    <%= form.submit %>
+  </div>
+<% end %>

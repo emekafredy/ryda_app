@@ -1,0 +1,86 @@
+<div class="new-request-wrapper">
+  <h1 class="text-center requests-table-header">Offer Details</h1>
+  <hr>
+  <p id="notice"><%= notice %></p>
+
+  <div class="request-details-wrapper">
+    <h2 class="details-sub-header">
+      Offer
+    </h2>
+    <hr>
+
+    <div class="row details-key-value-wrapper">
+      <div class="col"> <strong>Origin:</strong> </div>
+      <div class="col-4"></div>
+      <div class="col"> <%= @offer.origin %> </div>
+    </div>
+
+    <div class="row details-key-value-wrapper">
+      <div class="col"> <strong>Destination:</strong> </div>
+      <div class="col-4"></div>
+      <div class="col"> <%= @offer.destination %> </div>
+    </div>
+
+    <div class="row details-key-value-wrapper">
+      <div class="col"> <strong>Take off:</strong> </div>
+      <div class="col-4"></div>
+      <div class="col"> <%= @offer.take_off %> </div>
+    </div>
+
+    <div class="row details-key-value-wrapper">
+      <div class="col"> <strong>Status:</strong> </div>
+      <div class="col-4"></div>
+      <div class="col"> <%= @offer.status %> </div>
+    </div>
+
+    <div class="row details-key-value-wrapper">
+      <div class="col"> <strong>Maximum intake:</strong> </div>
+      <div class="col-4"></div>
+      <div class="col"> <%= @offer.maximum_intake %> </div>
+    </div>
+
+    <div class="row details-key-value-wrapper">
+      <div class="col"> <strong>No of Passengers :</strong> </div>
+      <div class="col-4"></div>
+      <div class="col"> 0 </div>
+    </div>
+
+    <hr>
+    <h2 class="details-sub-header">
+      Rider
+    </h2>
+    <hr>
+
+    <div class="text-center">
+      <p class="requester-profile-name"> <%= @user.first_name %> <%= @user.last_name %> </p>
+      <img src="<%= @user.image %>" alt="" class="requester-profile-image">
+    </div>
+
+    <div class="row details-key-value-wrapper">
+      <div class="col"> <strong>Email:</strong> </div>
+      <div class="col-4"></div>
+      <div class="col"> <%= @user.email %> </div>
+    </div>
+
+    <div class="row details-key-value-wrapper">
+      <div class="col"> <strong>Phone:</strong> </div>
+      <div class="col-4"></div>
+      <div class="col"> +234 7036607978 </div>
+    </div>
+
+    <hr>
+
+    <h2 class="details-sub-header">
+      Passengers
+    </h2>
+    <a href="#" class="text-center"> View List </a>
+    <hr>
+
+    <%= link_to 'Back', offers_path, :class => "btn btn-def" %>
+
+    <div class="float-right">
+      <%= link_to 'Edit', edit_offer_path(@offer), :class => "btn btn-primary" %>
+      <%= link_to 'Delete', offer_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+    </div>
+  </div>
+</div>
