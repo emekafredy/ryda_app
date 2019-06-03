@@ -55,8 +55,30 @@
 
 .dropdown-nav-link {
   text-decoration: none;
+  width: 15rem !important;
+  color: #ce0058 !important;
+}
+
+.profile-dropdown-nav-link {
+  text-decoration: none;
 }
 
 .dropdown-nav-link:hover {
+  background-color: #ce0058;
+  color: #fff !important;
+}
+
+.profile-dropdown-nav-link:hover {
   background-color: #ccc;
+}
+
+.toggle-dropdown {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ce0058;
+}
+
+.menu-dropdown-div {
+  margin-right: -1200px !important;
+  text-align: center;
 }

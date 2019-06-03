@@ -1,0 +1,34 @@
+<div class="new-request-wrapper">
+  <p id="notice"><%= notice %></p>
+  <h1 class="text-center requests-table-header">Your Matches</h1>
+  <hr>
+  <div class="table-div">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Take off</th>
+          <th>Maximum intake</th>
+          <th>Available Spaces</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @matches.each do |offer| %>
+          <tr>
+            <td><%= offer.origin %></td>
+            <td><%= offer.destination %></td>
+            <td><%= offer.take_off.strftime("at %I:%M%p, %e %B, %Y") %></td>
+            <td><%= offer.maximum_intake %></td>
+            <td>2</td>
+            <td><%= offer.status %></td>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="back-link float-left">
+      <%= link_to 'View available rides', offers_all_path, :class => "text-center" %>
+    </div>
+  </div>
+</div>

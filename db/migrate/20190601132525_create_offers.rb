@@ -3,7 +3,7 @@ class CreateOffers < ActiveRecord::Migration[5.2]
     create_table :offers do |t|
       t.string :origin
       t.string :destination
-      t.time :take_off
+      t.datetime :take_off
       t.integer :user_id
       t.integer :maximum_intake
       t.integer :status

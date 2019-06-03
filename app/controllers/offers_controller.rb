@@ -61,10 +61,45 @@ class OffersController < ApplicationController
     end
   end
 
+  def get_current_offers
+    @all_offers = Offer.all.order("created_at DESC")
+    @current_offers = @all_offers.select{ |offer| offer[:take_off].strftime("%F %T") > Time.now.strftime("%F %T") }
+  end
+
+  def get_current_user_requests
+    @all_requests = Request.where(user_id: current_user.id).order("created_at DESC")
+    @all_requests.select{ |request| request[:take_off].strftime("%F %T") > Time.now.strftime("%F %T") }
+  end
+
+  # GET /offers/all
+  def all
+    @current_offers = get_current_offers
+    return @current_offers
+  end
+
+  def ride_matches
+    @current_user_requests = get_current_user_requests
+
+    @get_offers = Offer.where.not(user_id: current_user.id)
+    @available_offers = @get_offers.select{ |offer| offer[:take_off].strftime("%F %T") > Time.now.strftime("%F %T") }
+    @matches = []
+    @current_user_requests.map do |request|
+      @available_offers.map do |offer|
+        if (request.origin == offer.origin) && (request.destination == offer.destination) && (request.take_off == offer.take_off)
+          @matches << offer
+        end
+      end
+    end
+
+    puts 'LENGTH', @matches.length
+
+    return @matches
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
-      @offer = Offer.find(params[:id])
+      @offer = Offer.where(user_id: current_user.id).find(params[:id]) rescue not_found
       @user = current_user
     end
 

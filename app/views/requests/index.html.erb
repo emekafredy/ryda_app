@@ -4,14 +4,17 @@
   <h1 class="text-center requests-table-header">Requests</h1>
   <hr>
   <div class="table-div">
-    <%= link_to new_request_path, :class => "btn btn-red"  do %>
-      <i class="fa fa-plus"></i> New Request
+    <% if @request_exists || @offer_exists %>
+      <%= link_to('Find Matches', offers_ride_matches_path, :class => "btn btn-red") %>
+    <% else %>
+      <%= link_to new_request_path, :class => "btn btn-red",  :disabled => true do %>
+        <i class="fa fa-plus"></i> New Request
+      <% end %>
     <% end %>
     <br><br>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Id</th>
           <th>Origin</th>
           <th>Destination</th>
           <th>Status</th>
@@ -24,7 +27,6 @@
       <tbody>
         <% @requests.each do |request| %>
           <tr>
-            <td><%= request.id %></td>
             <td><%= request.origin %></td>
             <td><%= request.destination %></td>
             <td><%= request.status %></td>

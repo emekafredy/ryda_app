@@ -1,0 +1,40 @@
+<div class="new-request-wrapper">
+  <p id="notice"><%= notice %></p>
+  <h1 class="text-center requests-table-header">Available Offers</h1>
+  <hr>
+  <div class="table-div">
+    <% if (!@offer_exists && !@request_exists) %>
+      <%= link_to new_offer_path, :class => "btn btn-red"  do %>
+        <i class="fa fa-plus"></i> Offer Ride
+      <% end %>
+    <% end %>
+    <br><br>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Take off</th>
+          <th>Maximum intake</th>
+          <th>Available Spaces</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @current_offers.each do |offer| %>
+          <tr>
+            <td><%= offer.origin %></td>
+            <td><%= offer.destination %></td>
+            <td><%= offer.take_off.strftime("at %I:%M%p, %e %B, %Y") %></td>
+            <td><%= offer.maximum_intake %></td>
+            <td>2</td>
+            <td><%= offer.status %></td>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="back-link float-left">
+      <%= link_to 'Go to my offers', offers_path, :class => "text-center" %>
+    </div>
+  </div>
+</div>
