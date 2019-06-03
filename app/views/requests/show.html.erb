@@ -22,7 +22,7 @@
     <div class="row details-key-value-wrapper">
       <div class="col"> <strong>Take off:</strong> </div>
       <div class="col-4"></div>
-      <div class="col"> <%= @request.take_off %> </div>
+      <div class="col"> <%= @request.take_off.strftime("at %I:%M%p, %e %B, %Y") %> </div>
     </div>
 
     <div class="row details-key-value-wrapper">
@@ -80,7 +80,7 @@
     <div class="row details-key-value-wrapper">
       <div class="col"> <strong>Take off:</strong> </div>
       <div class="col-4"></div>
-      <div class="col"> <%= @request.take_off %> </div>
+      <div class="col"> <%= @request.take_off.strftime("at %I:%M%p, %e %B, %Y") %> </div>
     </div>
 
     <hr>

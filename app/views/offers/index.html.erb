@@ -4,14 +4,15 @@
   <h1 class="text-center requests-table-header">Offers</h1>
   <hr>
   <div class="table-div">
-    <%= link_to new_offer_path, :class => "btn btn-red"  do %>
-      <i class="fa fa-plus"></i> New Offer
+    <% if (!@offer_exists && !@request_exists) %>
+      <%= link_to new_offer_path, :class => "btn btn-red"  do %>
+        <i class="fa fa-plus"></i> New Offer
+      <% end %>
     <% end %>
     <br><br>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Id</th>
           <th>Origin</th>
           <th>Destination</th>
           <th>Status</th>
@@ -24,7 +25,6 @@
       <tbody>
         <% @offers.each do |offer| %>
           <tr>
-            <td><%= offer.id %></td>
             <td><%= offer.origin %></td>
             <td><%= offer.destination %></td>
             <td><%= offer.status %></td>
@@ -48,5 +48,8 @@
         <% end %>
       </tbody>
     </table>
+    <div class="back-link float-left">
+      <%= link_to 'View available rides', offers_all_path, :class => "text-center" %>
+    </div>
   </div>
 </div>

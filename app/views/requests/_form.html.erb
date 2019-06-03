@@ -1,8 +1,8 @@
-<%= form_with(model: request, local: true) do |form| %>
+<%= form_for request do |form| %>
   <div class="input-group mb-2p">
     <div class="input-group-prepend">
       <div class="input-group-text">
-        <i class="fa fa-user"></i>
+        <i class="fa fa-map-marker"></i>
       </div>
     </div>
     <%= form.text_field :origin, :class => "form-control", :placeholder => "Origin" %>
@@ -12,17 +12,17 @@
   <div class="input-group mb-2p">
     <div class="input-group-prepend">
       <div class="input-group-text">
-        <i class="fa fa-user"></i>
+        <i class="fa fa-map-marker"></i>
       </div>
     </div>
-    <%= form.text_field :destination, :class => "form-control", :placeholder => "Destination" %>
+    <%= form.text_field :destination, :class => "form-control", :placeholder => "Destination"%>
   </div>
   <p class="error-message"> <%= request.errors.full_messages_for(:destination)[0] %> </p>
 
   <hr>
   <%= form.label 'Take off time' %>
   <div class="form-group">
-    <%= form.time_select :take_off, :class => "form-control" %>
+    <%= form.datetime_select :take_off, :class => "form-control" %>
   </div>
   <hr>
   <div class="text-center">
