@@ -1,6 +1,10 @@
-<h1>Editing Request</h1>
-
-<%= render 'form', request: @request %>
-
-<%= link_to 'Show', @request %> |
-<%= link_to 'Back', requests_path %>
+<div class="new-request-wrapper">
+  <h1 class="text-center new-request-header">Request Update</h1>
+  <hr>
+  <div class="new-request-form-wrapper">
+    <%= render 'form', request: @request %>
+  </div>
+  <div class="back-link">
+    <%= link_to 'Back to requests', requests_path, :class => "text-center" %>
+  </div>
+</div>

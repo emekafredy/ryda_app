@@ -53,43 +53,17 @@
       <div class="col-4"></div>
       <div class="col"> +234 7036607978 </div>
     </div>
-
-    <hr>
-    <h2 class="details-sub-header">
-      Rider
-    </h2>
-    <hr>
-
-    <div class="text-center">
-      <p class="requester-profile-name"> <%= @user.first_name %> <%= @user.last_name %> </p>
-      <img src="<%= @user.image %>" alt="" class="requester-profile-image">
-    </div>
-
-    <div class="row details-key-value-wrapper">
-      <div class="col"> <strong>Email:</strong> </div>
-      <div class="col-4"></div>
-      <div class="col"> <%= @user.email %> </div>
-    </div>
-
-    <div class="row details-key-value-wrapper">
-      <div class="col"> <strong>Phone:</strong> </div>
-      <div class="col-4"></div>
-      <div class="col"> +234 7036607978 </div>
-    </div>
-
-    <div class="row details-key-value-wrapper">
-      <div class="col"> <strong>Take off:</strong> </div>
-      <div class="col-4"></div>
-      <div class="col"> <%= @request.take_off.strftime("at %I:%M%p, %e %B, %Y") %> </div>
-    </div>
-
     <hr>
 
     <%= link_to 'Back', requests_path, :class => "btn btn-def" %>
 
     <div class="float-right">
-      <%= link_to 'Edit', edit_request_path(@request), :class => "btn btn-primary" %>
-      <%= link_to 'Delete', request_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+      <% if (@request.status === "booked" || @request.status === "completed") %>
+        <i class="fa fa-ban fa-2x not-executable-message"></i>
+      <% else %>
+        <%= link_to 'Edit', edit_request_path(@request), :class => "btn btn-primary" %>
+        <%= link_to 'Delete', request_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+      <% end %>
     </div>
   </div>
 </div>

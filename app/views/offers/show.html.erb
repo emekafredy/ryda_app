@@ -79,8 +79,12 @@
     <%= link_to 'Back', offers_path, :class => "btn btn-def" %>
 
     <div class="float-right">
-      <%= link_to 'Edit', edit_offer_path(@offer), :class => "btn btn-primary" %>
-      <%= link_to 'Delete', offer_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+      <% if @editable_record %>
+        <%= link_to 'Edit', edit_offer_path(@offer), :class => "btn btn-primary" %>
+        <%= link_to 'Delete', offer_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+      <% else %>
+        <i class="fa fa-ban fa-2x not-executable-message"></i>
+      <% end %>
     </div>
   </div>
 </div>
