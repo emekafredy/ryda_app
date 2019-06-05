@@ -108,6 +108,13 @@ class OffersController < ApplicationController
   def my_booked_ride
   end
 
+  def cancel_ride
+    @request = Request.where(user_id: current_user.id, status: :booked)
+    @request.update(offer_id: nil, status: 0)
+    flash.notice = 'You have cancel the ride.'
+    redirect_to offers_ride_matches_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer

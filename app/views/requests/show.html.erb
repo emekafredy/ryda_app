@@ -62,7 +62,7 @@
         <i class="fa fa-ban fa-2x not-executable-message"></i>
       <% else %>
         <%= link_to 'Edit', edit_request_path(@request), :class => "btn btn-primary" %>
-        <%= link_to 'Delete', request_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+        <%= link_to 'Delete Request', request_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
       <% end %>
     </div>
   </div>
