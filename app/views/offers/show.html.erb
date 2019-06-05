@@ -4,6 +4,14 @@
   <p id="notice"><%= notice %></p>
 
   <div class="request-details-wrapper">
+    <div class="float-right">
+      <% if @no_of_passengers > 0 && (@offer.status === "open" || @offer.status === "closed" ) %>
+        <%= link_to 'Start Ride', start_ride_path, :method => :put, :class => "btn btn-success" %>
+      <% end %>
+      <% if (@offer.status === "in_progress") %>
+        <%= link_to 'Complete Ride', complete_ride_path, :method => :put, :class => "btn btn-success" %>
+      <% end %>
+    </div>
     <h2 class="details-sub-header">
       Offer
     </h2>
@@ -82,8 +90,6 @@
       <% if @editable_record %>
         <%= link_to 'Edit', edit_offer_path(@offer), :class => "btn btn-primary" %>
         <%= link_to 'Delete Offer', offer_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
-      <% else %>
-        <i class="fa fa-ban fa-2x not-executable-message"></i>
       <% end %>
     </div>
   </div>

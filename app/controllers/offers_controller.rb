@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_offer, only: [:show, :edit, :update, :destroy, :start_ride, :complete_ride]
   before_action :set_match, only: [:match_details, :join_ride]
-  before_action :booked_ride, only: [:my_booked_ride, :match_details]
+  before_action :booked_ride, only: [:my_booked_ride, :match_details, :complete_request]
   before_action :set_editable_offer, only: [:index, :show]
 
   # GET /offers
@@ -22,6 +22,7 @@ class OffersController < ApplicationController
 
   # GET /offers/1/edit
   def edit
+    @offer = Offer.where(user_id: current_user.id, status:open).find(params[:id]) rescue not_found
   end
 
   # POST /offers
@@ -65,7 +66,7 @@ class OffersController < ApplicationController
   end
 
   def get_current_offers
-    @all_offers = Offer.all.order("created_at DESC")
+    @all_offers = Offer.where(status: :open).order("created_at DESC")
     @current_offers = @all_offers.select{ |offer| offer[:take_off].strftime("%F %T") > Time.now.strftime("%F %T") }
   end
 
@@ -113,6 +114,29 @@ class OffersController < ApplicationController
     @request.update(offer_id: nil, status: 0)
     flash.notice = 'You have cancel the ride.'
     redirect_to offers_ride_matches_path
+  end
+
+  def start_ride
+    @offer.update(status: 2)
+    flash.notice = 'You have started this ride.'
+    redirect_to @offer
+  end
+
+  def complete_ride
+    @offer.update(status: 3)
+    flash.notice = 'You have completed this ride.'
+    redirect_to @offer
+  end
+
+  def complete_request
+    @request = Request.where(user_id: current_user.id, status: :booked)
+    @request.update(status: 2)
+    flash.notice = 'You have completed this ride.'
+    redirect_to offers_my_booked_ride_path
+  end
+
+  def completed_offers
+    @completed_offers = Offer.where(user_id: current_user.id, status: :completed).order("created_at DESC")
   end
 
   private
