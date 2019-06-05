@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
 
   def set_open_user_rides
     if (current_user)
-      @existing_request = Request.where(user_id: current_user.id, status: :open)
-      @existing_offer = Offer.where(user_id: current_user.id, status: :open)
+      @existing_request = Request.where(user_id: current_user.id, status: [:open, :booked])
+      @existing_offer = Offer.where(user_id: current_user.id, status: [:open, :closed, :in_progress])
 
       @request_exists = @existing_request.length > 0
       @offer_exists = @existing_offer.length > 0

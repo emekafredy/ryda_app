@@ -1,0 +1,83 @@
+<div class="new-request-wrapper">
+  <h1 class="text-center requests-table-header">Ride Details</h1>
+  <hr>
+  <p id="notice"><%= notice %></p>
+
+  <div class="request-details-wrapper">
+    <% if @ride %>
+      <h2 class="details-sub-header">
+        Ride
+      </h2>
+      <hr>
+
+      <div class="row details-key-value-wrapper">
+        <div class="col"> <strong>Origin:</strong> </div>
+        <div class="col-4"></div>
+        <div class="col"> <%= @ride.origin %> </div>
+      </div>
+
+      <div class="row details-key-value-wrapper">
+        <div class="col"> <strong>Destination:</strong> </div>
+        <div class="col-4"></div>
+        <div class="col"> <%= @ride.destination %> </div>
+      </div>
+
+      <div class="row details-key-value-wrapper">
+        <div class="col"> <strong>Take off:</strong> </div>
+        <div class="col-4"></div>
+        <div class="col"> <%= @ride.take_off.strftime("at %I:%M%p, %e %B, %Y") %> </div>
+      </div>
+
+      <div class="row details-key-value-wrapper">
+        <div class="col"> <strong>Status:</strong> </div>
+        <div class="col-4"></div>
+        <div class="col"> <%= @ride.status %> </div>
+      </div>
+
+      <div class="row details-key-value-wrapper">
+        <div class="col"> <strong>Maximum intake:</strong> </div>
+        <div class="col-4"></div>
+        <div class="col"> <%= @ride.maximum_intake %> </div>
+      </div>
+
+      <div class="row details-key-value-wrapper">
+        <div class="col"> <strong>No of Passengers :</strong> </div>
+        <div class="col-4"></div>
+        <div class="col"> <%= @no_of_passengers %> </div>
+      </div>
+
+      <hr>
+      <h2 class="details-sub-header">
+        Rider
+      </h2>
+      <hr>
+
+      <div class="text-center">
+        <p class="requester-profile-name"> <%= @user.first_name %> <%= @user.last_name %> </p>
+        <img src="<%= @user.image %>" alt="" class="requester-profile-image">
+      </div>
+
+      <div class="row details-key-value-wrapper">
+        <div class="col"> <strong>Email:</strong> </div>
+        <div class="col-4"></div>
+        <div class="col"> <%= @user.email %> </div>
+      </div>
+
+      <div class="row details-key-value-wrapper">
+        <div class="col"> <strong>Phone:</strong> </div>
+        <div class="col-4"></div>
+        <div class="col"> +234 7036607978 </div>
+      </div>
+
+      <hr>
+      <%= link_to 'Back', requests_path, :class => "btn btn-def" %>
+      <div class="float-right">
+        <%= link_to 'Cancel Ride', :class => "btn btn-primary" %>
+      </div>
+    <% else %>
+      <h6 class="no-booked-ride text-center">
+        You have no booked ride at the moment
+      </h6>
+    <% end %>
+  </div>
+</div>

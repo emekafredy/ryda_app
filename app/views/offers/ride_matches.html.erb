@@ -8,22 +8,34 @@
         <tr>
           <th>Origin</th>
           <th>Destination</th>
-          <th>Take off</th>
-          <th>Maximum intake</th>
+          <th>Take Off</th>
+          <th>Maximum Intake</th>
           <th>Available Spaces</th>
           <th>Status</th>
+          <th>View Details</th>
         </tr>
       </thead>
 
       <tbody>
-        <% @matches.each do |offer| %>
-          <tr>
-            <td><%= offer.origin %></td>
-            <td><%= offer.destination %></td>
-            <td><%= offer.take_off.strftime("at %I:%M%p, %e %B, %Y") %></td>
-            <td><%= offer.maximum_intake %></td>
-            <td>2</td>
-            <td><%= offer.status %></td>
+        <% if @matches.length === 0 %>
+          <h6 class="no-booked-ride text-center">
+            You have no matched rides at the moment
+          </h6>
+        <% else %>
+          <% @matches.each do |ride_details| %>
+            <tr>
+              <td><%= ride_details.origin %></td>
+              <td><%= ride_details.destination %></td>
+              <td><%= ride_details.take_off.strftime("at %I:%M%p, %e %B, %Y") %></td>
+              <td><%= ride_details.maximum_intake %></td>
+              <td>2</td>
+              <td><%= ride_details.status %></td>
+              <td>
+                <%= link_to ride_details_path(ride_details.id), class: "btn btn-success" do %>
+                  <i class="fa fa-info"></i>
+                <% end %>
+              </td>
+          <% end %>
         <% end %>
       </tbody>
     </table>
