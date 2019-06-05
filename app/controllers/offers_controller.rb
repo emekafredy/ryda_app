@@ -1,7 +1,8 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
   before_action :set_match, only: [:match_details, :join_ride]
-  before_action :booked_ride, only: [:my_booked_ride]
+  before_action :booked_ride, only: [:my_booked_ride, :match_details]
+  before_action :set_editable_offer, only: [:index, :show]
 
   # GET /offers
   # GET /offers.json
@@ -128,10 +129,24 @@ class OffersController < ApplicationController
 
     def booked_ride
       @user_request = Request.find_by(user_id: current_user.id, status: :booked)
+      @passengers_no = Request.where(offer_id: (params[:id].to_i)).length
       if (@user_request)
         @ride = Offer.find_by(id: @user_request.offer_id)
         @user = User.find_by(id: @ride.user_id)
         @no_of_passengers = Request.where(offer_id: @ride.id).length
+      end
+    end
+
+    def set_editable_offer
+      @user_offer = Offer.find_by(user_id: current_user.id, status: :open)
+      if @user_offer
+        @current_take_off = @user_offer.take_off.strftime("%F %T") > Time.now.strftime("%F %T")
+        @passengers_exist = Request.where(offer_id: @user_offer.id).length > 0 && @current_take_off
+        if @passengers_exist
+          @editable_record = false
+        else
+          @editable_record = true
+        end
       end
     end
 end

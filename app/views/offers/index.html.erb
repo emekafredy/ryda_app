@@ -35,14 +35,22 @@
             </td>
 
             <td>
-              <%= link_to edit_offer_path(offer), :class => "btn btn-primary"  do %>
-                <i class="fa fa-edit"></i>
+              <% if @editable_record %>
+                <%= link_to edit_offer_path(offer), :class => "btn btn-primary"  do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+              <% else %>
+                <i class="fa fa-ban fa-2x not-executable-message"></i>
               <% end %>
             </td>
 
             <td>
-              <%= link_to offer, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" do %>
-                <i class="fa fa-trash"></i>
+              <% if @editable_record %>
+                <%= link_to offer, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
+              <% else %>
+                <i class="fa fa-ban fa-2x not-executable-message"></i>
               <% end %>
             </td>
         <% end %>

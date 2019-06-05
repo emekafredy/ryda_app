@@ -1,6 +1,10 @@
-<h1>Editing Offer</h1>
-
-<%= render 'form', offer: @offer %>
-
-<%= link_to 'Show', @offer %> |
-<%= link_to 'Back', offers_path %>
+<div class="new-request-wrapper">
+  <h1 class="text-center new-request-header">Offer Update</h1>
+  <hr>
+  <div class="new-request-form-wrapper">
+    <%= render 'form', offer: @offer %>
+  </div>
+  <div class="back-link">
+    <%= link_to 'Back to offers', offers_path, :class => "text-center" %>
+  </div>
+</div>

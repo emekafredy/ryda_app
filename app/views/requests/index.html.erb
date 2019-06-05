@@ -36,15 +36,15 @@
                   <i class="fa fa-info"></i>
                 <% end %>
               <% else %>
-                <%= link_to request, class: "btn btn-success" do %>
+                <%= link_to request, class: "btn btn-success btn-margin" do %>
                   <i class="fa fa-info"></i>
                 <% end %>
               <% end %>
             </td>
 
             <td>
-              <% if request.status === "booked" %>
-                <p class="not-executable-message">Request is booked</p>
+              <% if (request.status === "booked" || request.status === "completed") %>
+                <i class="fa fa-ban fa-2x not-executable-message"></i>
               <% else %>
                 <%= link_to edit_request_path(request), :class => "btn btn-primary"  do %>
                   <i class="fa fa-edit"></i>
@@ -53,8 +53,8 @@
             </td>
 
             <td>
-              <% if request.status === "booked" %>
-                <p class="not-executable-message">Request is booked</p>
+              <% if (request.status === "booked" || request.status === "completed") %>
+                <i class="fa fa-ban fa-2x not-executable-message"></i>
               <% else %>
                 <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" do %>
                   <i class="fa fa-trash"></i>

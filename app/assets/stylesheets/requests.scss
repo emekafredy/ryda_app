@@ -68,11 +68,13 @@
   color: red;
   margin-bottom: 0px;
 }
+.no-booked-ride {
+  font-family: 'Dosis', cursive;
+  padding: 2rem;
+}
 
 .not-executable-message {
-  font-size: 0.65rem;
-  color: red;
-  margin-right: -2rem;
+  color: #ce0058;
 }
 
 .request-details-wrapper {
@@ -86,11 +88,6 @@
   .details-sub-header {
     margin-top: 2rem;
     font-family: 'Ranga', cursive;
-  }
-
-  .no-booked-ride {
-    font-family: 'Dosis', cursive;
-    padding: 4rem;
   }
 
   .details-key-value-wrapper {
