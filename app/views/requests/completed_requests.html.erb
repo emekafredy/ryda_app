@@ -1,0 +1,39 @@
+<div class="new-request-wrapper">
+  <p id="notice"><%= notice %></p>
+
+  <h1 class="text-center requests-table-header">Completed Requests</h1>
+  <hr>
+  <div class="table-div">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Status</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @completed_requests.length === 0 %>
+          <h6 class="no-booked-ride text-center">
+            You have no completed Request at the moment
+          </h6>
+        <% else %>
+          <% @completed_requests.each do |request| %>
+            <tr>
+              <td><%= request.origin %></td>
+              <td><%= request.destination %></td>
+              <td><%= request.status %></td>
+              <td>
+                <%= link_to request, class: "btn btn-success btn-margin" do %>
+                  <i class="fa fa-info"></i>
+                <% end %>
+              </td>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

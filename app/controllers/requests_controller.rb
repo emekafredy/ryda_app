@@ -19,6 +19,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/1/edit
   def edit
+    @request = Request.where(user_id: current_user.id, status:open).find(params[:id]) rescue not_found
   end
 
   # POST /requests
@@ -60,10 +61,14 @@ class RequestsController < ApplicationController
     end
   end
 
+  def completed_requests
+    @completed_requests = Request.where(user_id: current_user.id, status: :completed).order("created_at DESC")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_request
-      @request = Request.find(params[:id])
+      @request = Request.where(user_id: current_user.id).find(params[:id]) rescue not_found
       @user = current_user
     end
 
