@@ -1,5 +1,7 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_match, only: [:match_details, :join_ride]
+  before_action :booked_ride, only: [:my_booked_ride]
 
   # GET /offers
   # GET /offers.json
@@ -74,26 +76,35 @@ class OffersController < ApplicationController
   # GET /offers/all
   def all
     @current_offers = get_current_offers
-    return @current_offers
   end
 
   def ride_matches
     @current_user_requests = get_current_user_requests
-
     @get_offers = Offer.where.not(user_id: current_user.id)
     @available_offers = @get_offers.select{ |offer| offer[:take_off].strftime("%F %T") > Time.now.strftime("%F %T") }
     @matches = []
     @current_user_requests.map do |request|
       @available_offers.map do |offer|
-        if (request.origin == offer.origin) && (request.destination == offer.destination) && (request.take_off == offer.take_off)
+        if (request.origin == offer.origin) && (request.destination == offer.destination) && (request.take_off == offer.take_off) && (request.status === "open")
           @matches << offer
         end
       end
     end
 
-    puts 'LENGTH', @matches.length
-
     return @matches
+  end
+
+  def match_details
+  end
+
+  def join_ride
+    @request = Request.where(user_id: current_user.id, status: :open)
+    @request.update(offer_id: params[:id], status: 1)
+    flash.notice = 'You have joined this ride.'
+    redirect_to offers_ride_matches_path
+  end
+
+  def my_booked_ride
   end
 
   private
@@ -101,10 +112,26 @@ class OffersController < ApplicationController
     def set_offer
       @offer = Offer.where(user_id: current_user.id).find(params[:id]) rescue not_found
       @user = current_user
+      @no_of_passengers = Request.where(offer_id: @offer.id).length
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def offer_params
       params.require(:offer).permit(:origin, :destination, :take_off, :maximum_intake)
+    end
+
+    def set_match
+      @matches = ride_matches
+      @ride_details = @matches.detect{ |ride| ride.id == (params[:id].to_i) } rescue not_found
+      @user = User.find_by(id: @ride_details.user_id) rescue not_found
+    end
+
+    def booked_ride
+      @user_request = Request.find_by(user_id: current_user.id, status: :booked)
+      if (@user_request)
+        @ride = Offer.find_by(id: @user_request.offer_id)
+        @user = User.find_by(id: @ride.user_id)
+        @no_of_passengers = Request.where(offer_id: @ride.id).length
+      end
     end
 end

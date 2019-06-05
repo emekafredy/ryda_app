@@ -1,48 +1,48 @@
 <div class="new-request-wrapper">
-  <h1 class="text-center requests-table-header">Offer Details</h1>
+  <h1 class="text-center requests-table-header">Ride Details</h1>
   <hr>
   <p id="notice"><%= notice %></p>
 
   <div class="request-details-wrapper">
     <h2 class="details-sub-header">
-      Offer
+      Ride
     </h2>
     <hr>
 
     <div class="row details-key-value-wrapper">
       <div class="col"> <strong>Origin:</strong> </div>
       <div class="col-4"></div>
-      <div class="col"> <%= @offer.origin %> </div>
+      <div class="col"> <%= @ride_details.origin %> </div>
     </div>
 
     <div class="row details-key-value-wrapper">
       <div class="col"> <strong>Destination:</strong> </div>
       <div class="col-4"></div>
-      <div class="col"> <%= @offer.destination %> </div>
+      <div class="col"> <%= @ride_details.destination %> </div>
     </div>
 
     <div class="row details-key-value-wrapper">
       <div class="col"> <strong>Take off:</strong> </div>
       <div class="col-4"></div>
-      <div class="col"> <%= @offer.take_off.strftime("at %I:%M%p, %e %B, %Y") %> </div>
+      <div class="col"> <%= @ride_details.take_off.strftime("at %I:%M%p, %e %B, %Y") %> </div>
     </div>
 
     <div class="row details-key-value-wrapper">
       <div class="col"> <strong>Status:</strong> </div>
       <div class="col-4"></div>
-      <div class="col"> <%= @offer.status %> </div>
+      <div class="col"> <%= @ride_details.status %> </div>
     </div>
 
     <div class="row details-key-value-wrapper">
       <div class="col"> <strong>Maximum intake:</strong> </div>
       <div class="col-4"></div>
-      <div class="col"> <%= @offer.maximum_intake %> </div>
+      <div class="col"> <%= @ride_details.maximum_intake %> </div>
     </div>
 
     <div class="row details-key-value-wrapper">
       <div class="col"> <strong>No of Passengers :</strong> </div>
       <div class="col-4"></div>
-      <div class="col"> <%= @no_of_passengers %> </div>
+      <div class="col"> 0 </div>
     </div>
 
     <hr>
@@ -69,18 +69,9 @@
     </div>
 
     <hr>
-
-    <h2 class="details-sub-header">
-      Passengers
-    </h2>
-    <a href="#" class="text-center"> View List </a>
-    <hr>
-
-    <%= link_to 'Back', offers_path, :class => "btn btn-def" %>
-
+    <%= link_to 'Back', offers_ride_matches_path, :class => "btn btn-def" %>
     <div class="float-right">
-      <%= link_to 'Edit', edit_offer_path(@offer), :class => "btn btn-primary" %>
-      <%= link_to 'Delete', offer_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+      <%= link_to 'Join ride',  join_ride_path, :method => :put, :class => "btn btn-primary" %>
     </div>
   </div>
 </div>

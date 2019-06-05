@@ -31,20 +31,34 @@
             <td><%= request.destination %></td>
             <td><%= request.status %></td>
             <td>
-              <%= link_to request, class: "btn btn-success" do %>
-                <i class="fa fa-info"></i>
+              <% if request.status === "booked" %>
+                <%= link_to offers_my_booked_ride_path, class: "btn btn-success" do %>
+                  <i class="fa fa-info"></i>
+                <% end %>
+              <% else %>
+                <%= link_to request, class: "btn btn-success" do %>
+                  <i class="fa fa-info"></i>
+                <% end %>
               <% end %>
             </td>
 
             <td>
-              <%= link_to edit_request_path(request), :class => "btn btn-primary"  do %>
-                <i class="fa fa-edit"></i>
+              <% if request.status === "booked" %>
+                <p class="not-executable-message">Request is booked</p>
+              <% else %>
+                <%= link_to edit_request_path(request), :class => "btn btn-primary"  do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
               <% end %>
             </td>
 
             <td>
-              <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" do %>
-                <i class="fa fa-trash"></i>
+              <% if request.status === "booked" %>
+                <p class="not-executable-message">Request is booked</p>
+              <% else %>
+                <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
               <% end %>
             </td>
         <% end %>
