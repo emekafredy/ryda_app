@@ -21,13 +21,19 @@
       </thead>
 
       <tbody>
-        <% @current_offers.each do |offer| %>
-          <tr>
-            <td><%= offer.origin %></td>
-            <td><%= offer.destination %></td>
-            <td><%= offer.take_off.strftime("at %I:%M%p, %e %B, %Y") %></td>
-            <td><%= offer.maximum_intake %></td>
-            <td><%= offer.status %></td>
+        <% if @current_offers.length === 0 %>
+          <h6 class="no-booked-ride text-center">
+            There are no available rides at the moment
+          </h6>
+        <% else %>
+          <% @current_offers.each do |offer| %>
+            <tr>
+              <td><%= offer.origin %></td>
+              <td><%= offer.destination %></td>
+              <td><%= offer.take_off.strftime("at %I:%M%p, %e %B, %Y") %></td>
+              <td><%= offer.maximum_intake %></td>
+              <td><%= offer.status %></td>
+          <% end %>
         <% end %>
       </tbody>
     </table>

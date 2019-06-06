@@ -1,7 +1,7 @@
 <div class="new-request-wrapper">
   <p id="notice"><%= notice %></p>
 
-  <h1 class="text-center requests-table-header">Completed Requests</h1>
+  <h1 class="text-center requests-table-header">Completed Offers</h1>
   <hr>
   <div class="table-div">
     <table class="table table-bordered table-striped">
@@ -17,7 +17,7 @@
       <tbody>
         <% if @completed_offers.length === 0 %>
           <h6 class="no-booked-ride text-center">
-            You have no completed Offer at the moment
+            You have no completed Offer yet
           </h6>
         <% else %>
           <% @completed_offers.each do |offer| %>

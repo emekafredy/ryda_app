@@ -11,7 +11,7 @@ Ryda App is a carpool application which allows an Andelan car owner to give a ri
 
 
 #### Services
-  - [Rails](https://rubyonrails.org/) | [Postgres](https://www.postgresql.org/)
+  - [Rails](https://rubyonrails.org/) | [Postgres](https://www.postgresql.org/) | [Google Auth](https://console.developers.google.com/apis/library)
 
 
 #### App Setup instructions
@@ -23,5 +23,10 @@ Ryda App is a carpool application which allows an Andelan car owner to give a ri
   - Run `rails s` to start up the app.
   - Visit the url `http://localhost:3000` to run the app.
 
+#### App Managament Board
+  - [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2351545)
+
+#### Production URL
+  - [Ryda-App](https://ryda-app.herokuapp.com/)
 
 #### How to run the test suite
