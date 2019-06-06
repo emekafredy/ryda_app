@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+  before_action :authenticate_user
   before_action :set_offer, only: [:show, :edit, :update, :destroy, :start_ride, :complete_ride]
   before_action :set_match, only: [:match_details, :join_ride]
   before_action :booked_ride, only: [:my_booked_ride, :match_details, :complete_request]

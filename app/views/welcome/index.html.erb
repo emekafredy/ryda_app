@@ -4,9 +4,7 @@
   </h1>
 	<p>...Epic rides with Friends...</p>
 	<% if user_signed_in? %>
-		<a href="#" class="login">
-			View Dashboard
-		</a>
+		<%= link_to('View Available Rides', offers_all_path, :class => "login") %>
 	<%else%>
 		<a href="<%=user_google_oauth2_omniauth_authorize_path%>" class="login">
 	    <img src="http://www.sclance.com/pngs/google-g-logo-png/google_g_logo_png_593476.jpg" alt="" class="google-Logout">

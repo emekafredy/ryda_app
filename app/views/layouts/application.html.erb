@@ -58,8 +58,9 @@
                 <%= current_user.last_name %>
                 <img src="<%= current_user.image %>" alt="" class="profile-image">
               </a>
-              <div class="dropdown-menu text-center">
-                <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "dropdown-item profile-dropdown-nav-link") %>
+              <div class="dropdown-menu text-center menu-dropdown-div">
+                <%= link_to('My Profile', profile_path, :class => "dropdown-item dropdown-nav-link-color") %>
+                <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "dropdown-item dropdown-nav-link-color") %>
               </div>
             </li>
           </ul>

@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
       @offer_exists = @existing_offer.length > 0
     end
   end
+
+  def authenticate_user
+    redirect_to root_url unless user_signed_in?
+  end
 end

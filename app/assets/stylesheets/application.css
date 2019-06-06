@@ -59,11 +59,20 @@
   color: #ce0058 !important;
 }
 
+.dropdown-nav-link-color {
+  color: #ce0058 !important;
+}
+
 .profile-dropdown-nav-link {
   text-decoration: none;
 }
 
 .dropdown-nav-link:hover {
+  background-color: #ce0058;
+  color: #fff !important;
+}
+
+.dropdown-nav-link-color:hover {
   background-color: #ce0058;
   color: #fff !important;
 }
