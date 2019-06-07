@@ -23,7 +23,7 @@ class OffersController < ApplicationController
 
   # GET /offers/1/edit
   def edit
-    @offer = Offer.where(user_id: current_user.id, status:open).find(params[:id]) rescue not_found
+    @offer = Offer.where(user_id: current_user.id, status: :open).find(params[:id]) rescue not_found
   end
 
   # POST /offers
@@ -33,7 +33,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
+        format.html { redirect_to @offer, success: 'Offer successfully created.' }
         format.json { render :show, status: :created, location: @offer }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class OffersController < ApplicationController
   def update
     respond_to do |format|
       if @offer.update(offer_params)
-        format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
+        format.html { redirect_to @offer, success: 'Offer successfully updated.' }
         format.json { render :show, status: :ok, location: @offer }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class OffersController < ApplicationController
   def destroy
     @offer.destroy
     respond_to do |format|
-      format.html { redirect_to offers_url, notice: 'Offer was successfully destroyed.' }
+      format.html { redirect_to offers_url, success: 'Offer successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -101,10 +101,19 @@ class OffersController < ApplicationController
   end
 
   def join_ride
+    @passengers_length = Request.where(offer_id: (params[:id].to_i)).length
+    @maximum_ride_length = Offer.find(params[:id].to_i)
     @request = Request.where(user_id: current_user.id, status: :open)
-    @request.update(offer_id: params[:id], status: 1)
-    flash.notice = 'You have joined this ride.'
-    redirect_to offers_ride_matches_path
+    respond_to do |format|
+      if @passengers_length < @maximum_ride_length.maximum_intake
+        @request.update(offer_id: params[:id], status: 1)
+        redirect_to offers_ride_matches_path
+        flash[:success] = "You have succesfully joined the ride."
+      else
+        format.html { render :match_details }
+        flash[:danger] = "Oops! You cannot join this ride. The passengers' seat is filled up"
+      end
+    end
   end
 
   def my_booked_ride
@@ -113,27 +122,27 @@ class OffersController < ApplicationController
   def cancel_ride
     @request = Request.where(user_id: current_user.id, status: :booked)
     @request.update(offer_id: nil, status: 0)
-    flash.notice = 'You have cancel the ride.'
     redirect_to offers_ride_matches_path
+    flash[:success] = "You have cancelled the ride."
   end
 
   def start_ride
     @offer.update(status: 2)
-    flash.notice = 'You have started this ride.'
     redirect_to @offer
+    flash[:success] = "You have started this ride."
   end
 
   def complete_ride
     @offer.update(status: 3)
-    flash.notice = 'You have completed this ride.'
     redirect_to @offer
+    flash[:success] = 'You have completed this ride.'
   end
 
   def complete_request
     @request = Request.where(user_id: current_user.id, status: :booked)
     @request.update(status: 2)
-    flash.notice = 'You have completed this ride.'
     redirect_to offers_my_booked_ride_path
+    flash[:success] = 'You have completed this ride.'
   end
 
   def completed_offers

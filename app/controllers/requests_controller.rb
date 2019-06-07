@@ -20,7 +20,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/1/edit
   def edit
-    @request = Request.where(user_id: current_user.id, status:open).find(params[:id]) rescue not_found
+    @request = Request.where(user_id: current_user.id, status: :open).find(params[:id]) rescue not_found
   end
 
   # POST /requests
@@ -29,7 +29,7 @@ class RequestsController < ApplicationController
     @request = current_user.requests.build(request_params)
     respond_to do |format|
       if @request.save
-        format.html { redirect_to @request, notice: 'Request was successfully created.' }
+        format.html { redirect_to @request, success: 'Request successfully created.' }
         format.json { render :show, status: :created, location: @request }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class RequestsController < ApplicationController
   def update
     respond_to do |format|
       if @request.update(request_params)
-        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
+        format.html { redirect_to @request, success: 'Request successfully updated.' }
         format.json { render :show, status: :ok, location: @request }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class RequestsController < ApplicationController
   def destroy
     @request.destroy
     respond_to do |format|
-      format.html { redirect_to requests_url, notice: 'Request was successfully destroyed.' }
+      format.html { redirect_to requests_url, success: 'Request successfully deleted.' }
       format.json { head :no_content }
     end
   end

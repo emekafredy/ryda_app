@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_open_user_rides
+  add_flash_types :success, :danger, :info
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')
