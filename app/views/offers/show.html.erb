@@ -1,8 +1,6 @@
 <div class="new-request-wrapper">
   <h1 class="text-center requests-table-header">Offer Details</h1>
   <hr>
-  <p id="notice"><%= notice %></p>
-
   <div class="request-details-wrapper">
     <div class="float-right">
       <% if @no_of_passengers > 0 && (@offer.status === "open" || @offer.status === "closed" ) %>

@@ -14,8 +14,6 @@
   </head>
 
   <body>
-    <!-- <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> -->
     <nav class="navbar navbar-light bg-light my-navbar">
       <a class="navbar-brand ryda-brand" href="<%=root_path%>">
         RYDA APP
@@ -67,6 +65,7 @@
         <%end%>
       </div>
     </nav>
+      <%= render :partial => 'flash_messages', :flash => flash %>
       <%= yield %>
     <footer class="footer-class text-center">
       <p> &copy; <em>Ryda App</em> , 2019 </p>
