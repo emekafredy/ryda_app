@@ -3,10 +3,7 @@ language: ruby
 before_install:
   - gem install bundler
 
-script:
-  — bundle install --jobs=3 --retry=3
-  — bundle exec rake db:create
-  — bundle exec rake db:migrate
+scripts:
   — bundle exec rspec
 
 after_script:
