@@ -5,6 +5,10 @@ Ryda App is a carpool application which allows an Andelan car owner to give a ri
   - ruby 2.6.2
   - rails 5.2.3
 
+#### Badges
+  [![Build Status](https://travis-ci.org/emekafredy/ryda_app.svg?branch=master)](https://travis-ci.org/emekafredy/ryda_app) |
+  [![Coverage Status](https://coveralls.io/repos/github/emekafredy/ryda_app/badge.svg?branch=master)](https://coveralls.io/github/emekafredy/ryda_app?branch=master)
+
 
 #### System dependencies
   - listed in `Gemfile`
@@ -30,3 +34,4 @@ Ryda App is a carpool application which allows an Andelan car owner to give a ri
   - [Ryda-App](https://ryda-app.herokuapp.com/)
 
 #### How to run the test suite
+  - Run `rspec` in the terminal to run the application unit tests

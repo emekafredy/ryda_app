@@ -2,5 +2,8 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require_relative 'config/application'
+require 'coveralls/rake/task'
+Coveralls::RakeTask.new
+task default: :spec
 
 Rails.application.load_tasks
