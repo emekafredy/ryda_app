@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def update_phone_number
     @user = User.find(current_user.id) rescue not_found
     @user.update(phone_update_params)
-    flash.notice = 'You have Updated your phone number'
+    flash[:success] = 'You have Updated your phone number'
     redirect_to profile_path
   end
 

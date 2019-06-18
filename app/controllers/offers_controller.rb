@@ -5,29 +5,21 @@ class OffersController < ApplicationController
   before_action :booked_ride, only: [:my_booked_ride, :match_details, :complete_request]
   before_action :set_editable_offer, only: [:index, :show]
 
-  # GET /offers
-  # GET /offers.json
   def index
     @offers = Offer.where(user_id: current_user.id).order("created_at DESC")
   end
 
-  # GET /offers/1
-  # GET /offers/1.json
   def show
   end
 
-  # GET /offers/new
   def new
     @offer = Offer.new
   end
 
-  # GET /offers/1/edit
   def edit
     @offer = Offer.where(user_id: current_user.id, status: :open).find(params[:id]) rescue not_found
   end
 
-  # POST /offers
-  # POST /offers.json
   def create
     @offer = current_user.offers.build(offer_params)
 
@@ -42,8 +34,6 @@ class OffersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /offers/1
-  # PATCH/PUT /offers/1.json
   def update
     respond_to do |format|
       if @offer.update(offer_params)
@@ -56,8 +46,6 @@ class OffersController < ApplicationController
     end
   end
 
-  # DELETE /offers/1
-  # DELETE /offers/1.json
   def destroy
     @offer.destroy
     respond_to do |format|
@@ -76,7 +64,6 @@ class OffersController < ApplicationController
     @all_requests.select{ |request| request[:take_off].strftime("%F %T") > Time.now.strftime("%F %T") }
   end
 
-  # GET /offers/all
   def all
     @current_offers = get_current_offers
   end
@@ -150,14 +137,12 @@ class OffersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_offer
       @offer = Offer.where(user_id: current_user.id).find(params[:id]) rescue not_found
       @user = current_user
       @no_of_passengers = Request.where(offer_id: @offer.id).length
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def offer_params
       params.require(:offer).permit(:origin, :destination, :take_off, :maximum_intake)
     end
