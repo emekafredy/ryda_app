@@ -6,7 +6,7 @@ class OffersController < ApplicationController
   before_action :set_editable_offer, only: [:index, :show]
 
   def index
-    @offers = Offer.where(user_id: current_user.id).order("created_at DESC")
+    @offers = Offer.get_offers(current_user)
   end
 
   def show
@@ -22,7 +22,6 @@ class OffersController < ApplicationController
 
   def create
     @offer = current_user.offers.build(offer_params)
-
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @offer, success: 'Offer successfully created.' }
@@ -54,52 +53,23 @@ class OffersController < ApplicationController
     end
   end
 
-  def get_current_offers
-    @all_offers = Offer.where(status: :open).order("created_at DESC")
-    @current_offers = @all_offers.select{ |offer| offer[:take_off].strftime("%F %T") > Time.now.strftime("%F %T") }
-  end
-
-  def get_current_user_requests
-    @all_requests = Request.where(user_id: current_user.id).order("created_at DESC")
-    @all_requests.select{ |request| request[:take_off].strftime("%F %T") > Time.now.strftime("%F %T") }
-  end
-
   def all
-    @current_offers = get_current_offers
+    @current_offers = Offer.get_current_offers
   end
 
   def ride_matches
-    @current_user_requests = get_current_user_requests
-    @get_offers = Offer.where.not(user_id: current_user.id)
-    @available_offers = @get_offers.select{ |offer| offer[:take_off].strftime("%F %T") > Time.now.strftime("%F %T") }
-    @matches = []
-    @current_user_requests.map do |request|
-      @available_offers.map do |offer|
-        if (request.origin == offer.origin) && (request.destination == offer.destination) && (request.take_off == offer.take_off) && (request.status === "open")
-          @matches << offer
-        end
-      end
-    end
-
-    return @matches
+    @matches = Offer.get_ride_matches(current_user)
   end
 
   def match_details
   end
 
   def join_ride
-    @passengers_length = Request.where(offer_id: (params[:id].to_i)).length
-    @maximum_ride_length = Offer.find(params[:id].to_i)
-    @request = Request.where(user_id: current_user.id, status: :open)
-    respond_to do |format|
-      if @passengers_length < @maximum_ride_length.maximum_intake
-        @request.update(offer_id: params[:id], status: 1)
-        redirect_to offers_ride_matches_path
-        flash[:success] = "You have succesfully joined the ride."
-      else
-        format.html { render :match_details }
-        flash[:danger] = "Oops! You cannot join this ride. The passengers' seat is filled up"
-      end
+    if Offer.join_offered_ride(params, current_user)
+      redirect_to offers_ride_matches_path
+      flash[:success] = "You have succesfully joined the ride."
+    else
+      flash[:danger] = "Oops! You cannot join this ride. The passengers' seat is filled up"
     end
   end
 
@@ -140,7 +110,7 @@ class OffersController < ApplicationController
     def set_offer
       @offer = Offer.where(user_id: current_user.id).find(params[:id]) rescue not_found
       @user = current_user
-      @no_of_passengers = Request.where(offer_id: @offer.id).length
+      @no_of_passengers = if defined?(@offer.id) then Request.where(offer_id: @offer.id).length else nil end
     end
 
     def offer_params
@@ -164,15 +134,6 @@ class OffersController < ApplicationController
     end
 
     def set_editable_offer
-      @user_offer = Offer.find_by(user_id: current_user.id, status: :open)
-      if @user_offer
-        @current_take_off = @user_offer.take_off.strftime("%F %T") > Time.now.strftime("%F %T")
-        @passengers_exist = Request.where(offer_id: @user_offer.id).length > 0 && @current_take_off
-        if @passengers_exist
-          @editable_record = false
-        else
-          @editable_record = true
-        end
-      end
+      Offer.editable_offer(current_user)
     end
 end
