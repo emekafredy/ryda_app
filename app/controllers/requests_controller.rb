@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def index
-    @requests = Request.where(user_id: current_user.id).order("created_at DESC")
+    @requests = Request.get_requests(current_user)
   end
 
   def show

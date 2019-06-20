@@ -11,6 +11,7 @@ RSpec.describe OffersController, type: :controller do
   let(:valid_attributes) { { origin: 'Jibowu', destination: 'Epic Tower', maximum_intake: 4, take_off: '2019-06-08 12:00:00' } }
   let(:valid_request_attributes) { { origin: 'Jibowu', destination: 'Epic Tower', take_off: (Time.now + 10*60*60).strftime("%F %T"), offer_id: completed_offers.first.id  } }
   let(:invalid_attributes) { { origin: '', destination: '' } }
+  let(:request_attributes) { { origin: 'Ikeja', destination: 'Epic Tower', take_off: (Time.now + 10*60*60).strftime("%F %T")  } }
 
   describe "GET #index" do
     it "returns a success response" do
@@ -145,6 +146,23 @@ RSpec.describe OffersController, type: :controller do
       expect(response).to be_successful
       expect(matching_offer.origin).to eql("Ikeja")
       expect(matching_offer.destination).to eql("Epic Tower")
+    end
+  end
+
+  describe "PUT #join_ride" do
+    before(:each) do
+      logout_user_1
+      login_user_2
+    end
+    let(:new_attributes) { { status: 1, offer_id: matching_offer.id } }
+
+    it "enables a logged in requester join a ride" do
+      request = subject.current_user.requests.build(request_attributes)
+      request.save!
+      put :join_ride, params: {id: matching_offer.id, offer: new_attributes}
+      request.update({ status: 1, offer_id: matching_offer.id })
+      expect(request.offer_id).to eql(matching_offer.id)
+      expect(request.status).to eql("booked")
     end
   end
 

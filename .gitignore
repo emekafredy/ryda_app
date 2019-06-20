@@ -30,4 +30,3 @@
 .env
 
 coverage/
-Gemfile.lock
