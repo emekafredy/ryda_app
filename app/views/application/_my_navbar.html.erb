@@ -1,0 +1,51 @@
+<nav class="navbar navbar-light bg-light my-navbar">
+  <a class="navbar-brand ryda-brand" href="<%=root_path%>">
+    RYDA APP
+    <img class="brand-tyre" src="https://rukminim1.flixcart.com/image/704/704/jj7givk0/two-wheeler-tyre/y/h/r/120-80-16-60p-tubeless-bike-tyre-nylogrip-zapper-kurve-mrf-original-imaf5csmsvfguhqw.jpeg?q=70" alt="">
+  </a>
+  <div class="float-right navbar-expand-sm">
+    <% if user_signed_in? %>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown main-dropdown">
+          <a class="toggle-dropdown" href="#" id="navbardrop" data-toggle="dropdown">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 192 192" style=" fill:#000000;">
+              <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                <path d="M0,192v-192h192v192z" fill="none"></path>
+                <g id="Слой_1" fill="#ce0058">
+                  <path d="M96,174c-43.011,0 -78,-34.989 -78,-78c0,-43.011 34.989,-78 78,-78c43.011,0 78,34.989 78,78c0,43.011 -34.989,78 -78,78zM96,24c-39.699,0 -72,32.301 -72,72c0,39.699 32.301,72 72,72c39.699,0 72,-32.301 72,-72c0,-39.699 -32.301,-72 -72,-72z"></path><path d="M96,156c-33.084,0 -60,-26.916 -60,-60c0,-33.084 26.916,-60 60,-60c33.084,0 60,26.916 60,60c0,33.084 -26.916,60 -60,60zM96,42c-29.775,0 -54,24.225 -54,54c0,29.775 24.225,54 54,54c29.775,0 54,-24.225 54,-54c0,-29.775 -24.225,-54 -54,-54z"></path><path d="M126,75c0,1.656 -1.344,3 -3,3h-54c-1.656,0 -3,-1.344 -3,-3v-6c0,-1.656 1.344,-3 3,-3h54c1.656,0 3,1.344 3,3z"></path><path d="M126,99c0,1.656 -1.344,3 -3,3h-54c-1.656,0 -3,-1.344 -3,-3v-6c0,-1.656 1.344,-3 3,-3h54c1.656,0 3,1.344 3,3z"></path><path d="M126,123c0,1.656 -1.344,3 -3,3h-54c-1.656,0 -3,-1.344 -3,-3v-6c0,-1.656 1.344,-3 3,-3h54c1.656,0 3,1.344 3,3z"></path></g>
+                </g>
+            </svg>
+          </a>
+          <div class="dropdown-menu menu-dropdown-div">
+            <%= link_to('Available Rides', offers_all_path, :class => "dropdown-item dropdown-nav-link link-margin-color") %>
+            <hr>
+            <%= link_to('My Offers', offers_path, :class => "dropdown-item dropdown-nav-link link-margin-color") %>
+            <%= link_to('My Requests', requests_path, :class => "dropdown-item dropdown-nav-link link-margin-color") %>
+            <hr>
+            <% if (!@offer_exists && !@request_exists) %>
+              <%= link_to('Offer Ride', new_offer_path, :class => "dropdown-item dropdown-nav-link link-margin-color") %>
+              <%= link_to('Request Ride', new_request_path, :class => "dropdown-item dropdown-nav-link link-margin-color") %>
+              <hr>
+            <% end %>
+            <%= link_to('Matches', offers_ride_matches_path, :class => "dropdown-item dropdown-nav-link link-margin-color") %>
+            <%= link_to('Booked Ride', offers_my_booked_ride_path, :class => "dropdown-item dropdown-nav-link link-margin-color") %>
+            <hr>
+            <%= link_to('Completed Offers', completed_offers_path, :class => "dropdown-item dropdown-nav-link link-margin-color") %>
+            <%= link_to('Completed Requests', completed_requests_path, :class => "dropdown-item dropdown-nav-link link-margin-color") %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            <%= current_user.first_name %>
+            <%= current_user.last_name %>
+            <img src="<%= current_user.image %>" alt="" class="profile-image">
+          </a>
+          <div class="dropdown-menu text-center menu-dropdown-div">
+            <%= link_to('My Profile', profile_path, :class => "dropdown-item dropdown-nav-link-color") %>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "dropdown-item dropdown-nav-link-color") %>
+          </div>
+        </li>
+      </ul>
+    <%end%>
+  </div>
+</nav>

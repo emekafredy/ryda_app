@@ -6,15 +6,8 @@
 	<% if user_signed_in? %>
 		<%= link_to('View Available Rides', offers_all_path, :class => "login") %>
 	<%else%>
-		<a href="<%=user_google_oauth2_omniauth_authorize_path%>" class="login">
-	    <img src="http://www.sclance.com/pngs/google-g-logo-png/google_g_logo_png_593476.jpg" alt="" class="google-Logout">
-	    Sign in with
-	    <span class="google-text text-1">G</span>
-	    <span class="google-text text-2">o</span>
-	    <span class="google-text text-3">o</span>
-	    <span class="google-text text-4">g</span>
-	    <span class="google-text text-5">l</span>
-	    <span class="google-text text-6">e</span>
+		<a href="<%=welcome_login_path%>" class="login">
+	    Sign in to your account
 	  </a>
 	<%end%>
 </header>

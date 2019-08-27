@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
-  get 'welcome/index'
+  get 'welcome/login'
   get 'offers/all'
   get 'users/profile', :to => 'users#profile', :as => :profile
   put 'users/profile', :to => 'users#update_phone_number', :as => :update_phone_number

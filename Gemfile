@@ -13,6 +13,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.2'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
+gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
 gem 'activerecord-session_store', '~> 1.0'
 gem 'travis'
 

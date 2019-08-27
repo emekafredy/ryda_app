@@ -2,6 +2,109 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /*use vh(viewport height) css unit for full coverage*/
+.login-lander {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: -4rem;
+  margin-top: -4rem;
+
+  p {
+    font-size: 3rem;
+    font-family: 'Ranga', cursive;
+    line-height: 1.1;
+    color: #696969;
+  }
+
+  .authentication-div {
+    border: 0.2px solid #ce0058;
+    background-color: #fff;
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+    transition: all 0.2s;
+    outline: none;
+    -moz-box-shadow:    0 0 8px #31353D;
+    -webkit-box-shadow: 0 0 8px #31353D;
+    box-shadow:         0 0 8px #31353D;
+  }
+
+  .sign-in-text {
+    font-size: 3rem;
+    font-family: 'Dosis', cursive;
+    line-height: 1.1;
+    color: #696969;
+    margin-top: 2rem;
+  }
+
+  .sign-in-empahsis {
+    font-size: 1rem;
+    font-family: 'Dosis', cursive;
+    line-height: 1.1;
+    color: #696969;
+    margin-top: 2rem;
+  }
+
+  .login {
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: #fff;
+    color: #696969;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 12px 0;
+    width: 80%;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    outline: none;
+    -moz-box-shadow:    0 0 8px #31353D;
+    -webkit-box-shadow: 0 0 8px #31353D;
+    box-shadow:         0 0 8px #31353D;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+      transition: .2s;
+      -moz-box-shadow:    0 0 15px #31353D;
+      -webkit-box-shadow: 0 0 15px #31353D;
+      box-shadow:         0 0 15px #31353D;
+    }
+
+    .google-Logout {
+      width: 2rem;
+      border-radius: 50px;
+    }
+
+    .google-text {
+      margin-right: -0.2rem;
+    }
+
+    .auth-images {
+      width: 1.5rem;
+    }
+  }
+
+  .option-row-design {
+    width: 90%;
+    margin: auto;
+
+    .horizontal-rule {
+      border: 1px dotted #696969;
+    }
+
+    span {
+      font-weight: bold;
+      color: #696969;
+    }
+  }
+}
+
 .lander {
   height: 100vh;
   display: flex;
@@ -82,34 +185,6 @@
     .google-Logout {
       width: 2rem;
       border-radius: 50px;
-    }
-
-    .google-text {
-      margin-right: -0.2rem;
-    }
-
-    .text-1 {
-      color: #4285F4;
-    }
-
-    .text-2 {
-      color: #DB4437;
-    }
-
-    .text-3 {
-      color: #F4B400;
-    }
-
-    .text-4 {
-      color: #4285F4;
-    }
-
-    .text-5 {
-      color: #0F9D58;
-    }
-
-    .text-6 {
-      color: #DB4437;
     }
   }
 }

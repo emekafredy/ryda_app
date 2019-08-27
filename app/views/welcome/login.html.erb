@@ -1,0 +1,48 @@
+<header class="login-lander">
+	<div class="row authentication-div">
+
+		<div class="col-md-12 text-center">
+			<p class="sign-in-text"> Sign in to your account </p>
+			<span class="sign-in-empahsis"> Build relationship with friends and colleagues by sharing epic rides </span>
+		</div>
+
+		<div class="col-md-6">
+			<a href="<%=user_google_oauth2_omniauth_authorize_path%>" class="btn login">
+				<img class="auth-images" src="https://img.icons8.com/color/48/000000/google-logo.png"> &nbsp;
+				Sign in with Google
+			</a>
+		</div>
+
+		<div class="col-md-6">
+			<a href="<%=user_facebook_omniauth_authorize_path%>" class="btn login">
+				<img class="auth-images" src="https://img.icons8.com/color/48/000000/facebook-circled.png"> &nbsp;
+				Sign in with Facebook
+			</a>
+		</div>
+
+		<div class="col-md-12">
+			<div class="row option-row-design">
+				<div class="col-md-5"> <hr class="horizontal-rule" /> </div>
+				<div class="col-md-2"> <span>or</span>  </div>
+				<div class="col-md-5"> <hr class="horizontal-rule" /> </div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<a href="<%=user_twitter_omniauth_authorize_path%>" class="btn login">
+				<img class="auth-images" src="https://img.icons8.com/color/48/000000/twitter.png"> &nbsp;
+				Sign in with Twitter
+			</a>
+		</div>
+
+		<div class="col-md-6">
+			<a href="<%=user_github_omniauth_authorize_path%>" class="btn login">
+				<img class="auth-images" src="https://img.icons8.com/color/48/000000/github--v1.png"> &nbsp;
+				Sign in with Github
+			</a>
+		</div>
+
+		<div class="col-md-12"> <hr> </div>
+
+	</div>
+</header>
