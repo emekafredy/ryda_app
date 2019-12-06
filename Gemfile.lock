@@ -183,7 +183,7 @@ GEM
       equatable (~> 0.6)
       tty-color (~> 0.5)
     pg (1.1.4)
-    puma (3.12.1)
+    puma (3.12.2)
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
@@ -346,7 +346,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.4.1)
   omniauth-twitter (~> 1.2, >= 1.2.1)
   pg (>= 0.18, < 2.0)
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 5.2.3)
   rspec-rails (~> 3.8)
   sass-rails (~> 5.0)
